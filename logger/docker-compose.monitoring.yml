@@ -1,0 +1,14 @@
+version: "3.6"
+volumes:
+    grafana_data: {}
+services:
+  grafana:
+    image: grafana/grafana:6.5.2
+    ports:
+      - 3000:3000
+    networks:
+      - grafana-postgres
+
+networks:
+  grafana-postgres:
+    external: true

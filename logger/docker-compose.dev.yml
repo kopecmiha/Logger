@@ -1,0 +1,23 @@
+version: '3.8'
+
+volumes:
+  postgres-data:
+
+services:
+  database:
+    restart: always
+    container_name: db_post
+    image: postgres:alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - 6435:5432
+    networks:
+      - grafana-postgres
+
+networks:
+  grafana-postgres:
+    external: true
